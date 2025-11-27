@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desert Agriculture Sentinel - Competition Evaluation Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a6b3c;
+            --secondary-color: #f39c12;
+            --accent-color: #3498db;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --success-color: #27ae60;
+            --warning-color: #e67e22;
+            --danger-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .university-badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .author-info i {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .section-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* List Styles */
+        ul.feature-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul.feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        ul.feature-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        th, td {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--light-bg);
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        tr:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        /* Image Gallery Styles */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.8rem;
+            font-size: 0.9rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .image-caption {
+            transform: translateY(0);
+        }
+
+        /* Highlight Box Styles */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #14532a;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #d68910;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Special Components */
+        .metric-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--light-bg);
+            border-radius: 30px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .tag-primary {
+            background-color: rgba(26, 107, 60, 0.1);
+            color: var(--primary-color);
+        }
+
+        .tag-secondary {
+            background-color: rgba(243, 156, 18, 0.1);
+            color: var(--secondary-color);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--light-bg);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.3rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .accordion {
+            margin: 1.5rem 0;
+        }
+
+        .accordion-item {
+            margin-bottom: 0.5rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--light-bg);
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .accordion-header:hover {
+            background-color: #e9ecef;
+        }
+
+        .accordion-body {
+            padding: 1rem;
+            background-color: white;
+            display: none;
+        }
+
+        .accordion-item.active .accordion-body {
+            display: block;
+        }
+
+        .accordion-item.active .accordion-header i:last-child {
+            transform: rotate(180deg);
+        }
+
+        .accordion-header i:last-child {
+            transition: transform 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="university-badge">Nahda University - Computer Science</div>
+                <h1>Desert Agriculture Sentinel</h1>
+                <div class="subtitle">AI System for Crop Health & Water Stress Detection Using Satellite Imagery</div>
+                <div class="author-info">
+                    <i class="fas fa-user"></i>
+                    <span>Eng.: Amin Mohamed Amin</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Section -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <div class="nav-logo">Desert Sentinel</div>
+                <ul class="nav-links">
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#technical">Technical Details</a></li>
+                    <li><a href="#results">Results</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Executive Summary Section -->
+    <section id="overview">
+        <div class="container">
+            <h2 class="section-title">Executive Summary</h2>
+            <div class="section-content">
+                <p>This AI system provides accurate vegetation mapping and early detection of crop stress and irrigation deficiency. By combining deep learning with remote sensing spectral indices, Desert Agriculture Sentinel delivers high-precision vegetation masks, health classification, and time-based environmental change analysis.</p>
+                <p>The tool supports farmers, environmental organizations, and government agencies in improving resource allocation, reducing water loss, and increasing agricultural productivity in desert regions.</p>
+                
+                <div class="highlight-box">
+                    <h3>Challenge Focus</h3>
+                    <p>مراقبة صحة المحاصيل والمياه في الزراعة الصحراوية بإستخدام الــ ML Models & Satellite Images</p>
+                    <p>Crop and Water Health Monitoring in Desert Agriculture using ML Models & Satellite Images</p>
+                </div>
+
+                <div class="two-column">
+                    <div>
+                        <h3>Strategic Impact</h3>
+                        <ul class="feature-list">
+                            <li>Early detection of agricultural stress and irrigation shortages</li>
+                            <li>Improved water management in desert farms</li>
+                            <li>Monitoring crop health for government agricultural programs</li>
+                            <li>Supporting "Sustainable Agriculture 2030" initiatives</li>
+                            <li>Helping farmers reduce losses and optimize irrigation schedules</li>
+                            <li>Providing geospatial insights for large-scale farming corporations</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Key Technologies</h3>
+                        <ul class="feature-list">
+                            <li>Deep Learning segmentation using U-Net (ResNet34 encoder)</li>
+                            <li>Classical vegetation indices: NDVI, GNDVI, NDWI, SAVI, MSI</li>
+                            <li>Multi-stage stress detection logic</li>
+                            <li>Gaussian filtering for noise reduction</li>
+                            <li>Temporal change detection (before/after images)</li>
+                            <li>Full agricultural health reporting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="section-content">
+                <div class="two-column">
+                    <div>
+                        <div class="card">
+                            <div class="card-title">
+                                <i class="fas fa-trophy"></i>
+                                Major Accomplishments
+                            </div>
+                            <ul class="feature-list">
+                                <li>Implemented a fully functional vegetation detection system using AI + classical indices</li>
+                                <li>Integrated U-Net semantic segmentation for crop boundaries and canopy detection</li>
+                                <li>Computed advanced vegetation indices (NDVI, GNDVI, NDWI, SAVI, MSI)</li>
+                                <li>Built automatic stress/water-deficit detection using NDWI + NDVI thresholds</li>
+                                <li>Designed a Streamlit dashboard for real-time visualization</li>
+                                <li>Added change detection between before/after images</li>
+                                <li>Generated downloadable agricultural health reports (CSV)</li>
+                                <li>Supported GeoTIFF satellite imagery through Rasterio</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card">
+                            <div class="card-title">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Major Challenges Overcome
+                            </div>
+                            <ul class="feature-list">
+                                <li>Handling multispectral bands and normalizing Sentinel/Landsat imagery</li>
+                                <li>Ensuring U-Net inference runs smoothly on CPU without GPU</li>
+                                <li>Balancing NDVI/NDWI thresholds across different crop types</li>
+                                <li>Distinguishing stressed crops from naturally low-vegetation desert backgrounds</li>
+                                <li>Managing large satellite images within memory limits</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-star"></i>
+                        Extra Attributes Added by Engineer
+                    </div>
+                    <div class="two-column">
+                        <ul class="feature-list">
+                            <li>Automatic fallback to classical indices if U-Net fails</li>
+                            <li>Multi-index stress detection framework</li>
+                            <li>RGB-only NIR estimation for non-multispectral images</li>
+                            <li>Streamlit visualization with color-coded masks</li>
+                        </ul>
+                        <ul class="feature-list">
+                            <li>Temporal change detection engine</li>
+                            <li>Unified CSV report generator</li>
+                            <li>Multi-language support (English/Arabic)</li>
+                            <li>Mobile-responsive interface design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Details Section -->
+    <section id="technical">
+        <div class="container">
+            <h2 class="section-title">Technical Details</h2>
+            <div class="section-content">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-database"></i>
+                        Dataset Information
+                    </div>
+                    <div class="two-column">
+                        <div>
+                            <h4>Data Sources</h4>
+                            <ul class="feature-list">
+                                <li>Sentinel-2 MSI (10 m)</li>
+                                <li>Landsat-8 OLI (30 m)</li>
+                                <li>PlanetScope agricultural imagery</li>
+                                <li>High-resolution drone RGB data</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Technical Specifications</h4>
+                            <ul class="feature-list">
+                                <li>Size: 10 MB to 300 MB per scene depending on resolution</li>
+                                <li>Format: GeoTIFF (preferred), TIFF, PNG, JPG</li>
+                                <li>Compatibility: Fully supports Rasterio for TIFF/GeoTIFF and PIL/OpenCV for RGB images</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-line"></i>
+                        Performance Metrics
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>U-Net</th>
+                                <th>Classical (NDVI/SAVI)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Accuracy</td>
+                                <td>86–92%</td>
+                                <td>65–73%</td>
+                            </tr>
+                            <tr>
+                                <td>IoU (Vegetation Segmentation)</td>
+                                <td>0.78</td>
+                                <td>0.51</td>
+                            </tr>
+                            <tr>
+                                <td>Water Stress Detection</td>
+                                <td>High</td>
+                                <td>Medium</td>
+                            </tr>
+                            <tr>
+                                <td>Noise Resistance</td>
+                                <td>High</td>
+                                <td>Low–Medium</td>
+                            </tr>
+                            <tr>
+                                <td>Speed</td>
+                                <td>Medium (CPU)</td>
+                                <td>Fast</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Conclusion: U-Net provides highly precise crop segmentation, whereas classical indices offer good performance when advanced models are unavailable.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code"></i>
+                        Implementation Details
+                    </div>
+                    <div class="image-gallery">
+                        <div class="gallery-item">
+                            <img src="https://z-cdn-media.chatglm.cn/files/e4b82b24-afe4-40c8-89c6-7fbe48f5ba62_Screenshot%202025-11-25%20113346.png?auth_key=1864245222-de2cfbc897804c95b696ba5eaac657db-0-801ea09117f7f304111f8494a262fc88" alt="Python Code Implementation">
+                            <div class="image-caption">Python code with multi-library imports and Streamlit components</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results">
+        <div class="container">
+            <h2 class="section-title">Output Results</h2>
+            <div class="section-content">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">86-92%</div>
+                        <div class="metric-label">Model Accuracy</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">0.78</div>
+                        <div class="metric-label">IoU Score</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">5+</div>
+                        <div class="metric-label">Vegetation Indices</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">Real-time</div>
+                        <div class="metric-label">Processing</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-file-alt"></i>
+                        Output Results of ML Model
+                    </div>
+                    <ul class="feature-list">
+                        <li>Stressed crop map (orange highlights)</li>
+                        <li>Vegetation coverage percentage (%)</li>
+                        <li>Stress/water deficit percentage (%)</li>
+                        <li>Before/After agricultural health comparison</li>
+                        <li>Risk assessment: Critical (very low vegetation), High Risk, Stress Warning, Excellent agricultural condition</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-briefcase"></i>
+                        Transformation of ML Model to Business Model
+                    </div>
+                    <div class="two-column">
+                        <div>
+                            <h4>Current Applications</h4>
+                            <ul class="feature-list">
+                                <li>Agricultural Decision Support Platform - Monthly crop status reports for farms</li>
+                                <li>Water Resource Optimization Tool - Detects irrigation deficiencies early</li>
+                                <li>Government Remote Sensing Monitoring - Tracking agricultural productivity in desert regions</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Future Expansion</h4>
+                            <ul class="feature-list">
+                                <li>Consulting Solution for agritech companies - Providing AI-generated vegetative insights</li>
+                                <li>Mobile App for Farmers - Upload drone images → get instant health results</li>
+                                <li>Integration with IoT sensors for real-time field monitoring</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">Application Gallery</h2>
+            <div class="section-content">
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://z-cdn-media.chatglm.cn/files/38bb9d2a-41b9-4186-aafa-c8e75aea2084_Screenshot%202025-11-25%20113429.png?auth_key=1864245222-4b767b5cef914caaa8db3ff3d9f9b8d2-0-8842db308db4bbff2ef389b25d4dd540" alt="Desert Agriculture Sentinel Interface">
+                        <div class="image-caption">Desert Agriculture Sentinel v7.2 - Main Interface</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://z-cdn-media.chatglm.cn/files/1c1280dd-6f99-4b89-a9d7-c8b0c20aafd2_Screenshot%202025-11-25%20113535.png?auth_key=1864245222-04c127941de047a9998dafe4062e83c6-0-1ae8b846f900874d795cba6a08a250bf" alt="Desert Sentinel Arabic Interface">
+                        <div class="image-caption">Desert Sentinel v7.2 - Arabic Interface with U-Net Processing</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://z-cdn-media.chatglm.cn/files/978bbcb7-472f-4671-a749-50144e438b3e_Screenshot%202025-11-25%20113548.png?auth_key=1864245222-a80b05439cb14923910cad5ce3e32074-0-13d17009a2c268282ff77828755d7701" alt="Vegetation Indices Visualization">
+                        <div class="image-caption">Vegetation Indices Visualization (NDVI, VARI, GNDVI, EVI, SAVI, MSI)</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://z-cdn-media.chatglm.cn/files/0a8ff1c6-187d-4d77-80a1-31c9caf1f25f_Screenshot%202025-11-25%20113606.png?auth_key=1864245222-9121e25718444142b0a1251128b8ef07-0-77b83032b9c9ae6e61d413fc19a12228" alt="Additional Vegetation Indices">
+                        <div class="image-caption">Additional Vegetation Indices (NDWI, GLI, TGI, ExG, GRVI)</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://z-cdn-media.chatglm.cn/files/4627dd3e-710d-4292-90e0-7c6db09fe5b1_Screenshot%202025-11-25%20113641.png?auth_key=1864245222-ad9a0de860be4fd4b9565942314c9a0d-0-4a6ee8cb56bee70e54576439b93e05f4" alt="Data Statistics Table">
+                        <div class="image-caption">Agricultural Data Statistics Table with Vegetation Coverage Metrics</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://z-cdn-media.chatglm.cn/files/e6b8398b-5f8a-4f11-9181-b3789cdde70d_Screenshot%202025-11-25%20113653.png?auth_key=1864245222-a9bd168973c94aed9fbc5284a03cbb9d-0-ff6f133d3ce81b9b65d374884de9e71f" alt="Vegetation Index Comparison">
+                        <div class="image-caption">Vegetation Index Comparison Data Table</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://z-cdn-media.chatglm.cn/files/ec452055-4844-4f1d-8b36-f1df418bc10f_Screenshot%202025-11-25%20113732.png?auth_key=1864245222-1da3df63a5564d638d48715c4078cbe8-0-a4ca3a36988281f37d90b63f17bf25be" alt="Excel Data Export">
+                        <div class="image-caption">Excel Data Export with Agricultural Metrics</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section id="references">
+        <div class="container">
+            <h2 class="section-title">References & Resources</h2>
+            <div class="section-content">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-link"></i>
+                        Attachment Links
+                    </div>
+                    <div class="two-column">
+                        <div>
+                            <h4>Datasets</h4>
+                            <ul>
+                                <li><a href="#">Sentinel-2 MSI Dataset</a></li>
+                                <li><a href="#">Landsat-8 Collection-2</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Research Papers</h4>
+                            <ul>
+                                <li><a href="#">U-Net Segmentation Research Paper</a></li>
+                                <li><a href="#">NDVI vs. SAVI Remote Sensing Study</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div>
+                            <h4>Tools & Scripts</h4>
+                            <ul>
+                                <li><a href="#">Google Earth Engine scripts</a></li>
+                                <li><a href="#">GitHub repository</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Related Articles</h4>
+                            <ul>
+                                <li>"NDVI and SAVI for Vegetation Monitoring in Arid Regions"</li>
+                                <li>"Deep Learning for Crop Health Detection"</li>
+                                <li>"Water Stress Analysis Using NDWI"</li>
+                                <li>"Remote Sensing in Desert Agriculture: A Review"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Desert Agriculture Sentinel</h3>
+                    <p>AI-powered monitoring system designed to evaluate vegetation health, detect water stress, and measure agricultural performance in arid and semi-arid regions.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Technologies</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>PyTorch</li>
+                        <li>Streamlit</li>
+                        <li>OpenCV</li>
+                        <li>Rasterio</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Vegetation Indices</h3>
+                    <ul>
+                        <li>NDVI</li>
+                        <li>GNDVI</li>
+                        <li>NDWI</li>
+                        <li>SAVI</li>
+                        <li>MSI</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>Nahda University - Computer Science</li>
+                        <li>Eng.: Amin Mohamed Amin</li>
+                        <li>Challenge 2: مراقبة صحة المحاصيل والمياه في الزراعة الصحراوية</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Desert Agriculture Sentinel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const accordionItem = this.parentElement;
+                    accordionItem.classList.toggle('active');
+                });
+            });
+
+            // Smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
